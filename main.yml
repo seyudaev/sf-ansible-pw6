@@ -5,10 +5,10 @@
   become: true
   tasks:
   - name: Performing Tasks for CentOS
-    include_tasks: centos.yml
+    include_tasks: docker_centos.yml
     when: ansible_facts['distribution'] == 'CentOS'
   - name: Performing Tasks for Ubuntu
-    include_tasks: ubuntu.yml
+    include_tasks: docker_ubuntu.yml
     when: ansible_facts['distribution'] == 'Ubuntu'
 	
 - hosts: database
