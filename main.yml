@@ -1,0 +1,19 @@
+---
+
+- hosts: app
+  remote_user: ansible
+  become: true
+  tasks:
+  - name: Performing Tasks for CentOS
+    include_tasks: centos.yml
+    when: ansible_facts['distribution'] == 'CentOS'
+  - name: Performing Tasks for Ubuntu
+    include_tasks: ubuntu.yml
+    when: ansible_facts['distribution'] == 'Ubuntu'
+	
+- hosts: database
+  remote_user: ansible
+  become: true
+  tasks:
+  - name: install postgresql
+    include_tasks: postgresql.yml
